@@ -17,44 +17,66 @@ STEP-4: Else subtract the key from the plain text.
 STEP-5: Display the cipher text obtained above.
 
 ## PROGRAM:
+# ENCRYPTION
 ```
-#include <stdio.h> 
-#include <string.h> 
-#include <ctype.h> 
-void main() 
-{ 
-    char plain[10],cipher[10]; 
-    int key,i,length; 
-    int result; 
-    printf("\n Enter the plain text:"); 
-    scanf("%s", plain); 
-    printf("\n Enter the key value:"); 
-    scanf("%d", &key); 
-    printf("\n \n \t PLAIN TEXt: %s", plain); 
-    printf("\n \n \t ENCRYPTED TEXT:"); 
-    for(i=0, length = strlen(plain); i<length; i++) 
-    { 
-        cipher[i]=plain[i] + key; 
-        if (isupper(plain[i]) && (cipher[i] > 'Z')) 
-        cipher[i] = cipher[i] - 26; 
-        if (islower(plain[i]) && (cipher[i] > 'z')) 
-        cipher[i] = cipher[i] - 26; 
-        printf("%c", cipher[i]); 
-    } 
-    printf("\n \n \t AFTER DECRYPTION : "); 
-    for(i=0;i<length;i++) 
-    { 
-        plain[i]=cipher[i]-key; 
-        if(isupper(cipher[i])&&(plain[i]<'A')) 
-        plain[i]=plain[i]+26; 
-        if(islower(cipher[i])&&(plain[i]<'a')) 
-        plain[i]=plain[i]+26; 
-        printf("%c",plain[i]); 
-    } 
+#include <stdio.h>
+
+int main()
+{
+    char str[100];
+    int key, i;
+
+    printf("Enter text: ");
+    scanf("%s", str);
+
+    printf("Enter key: ");
+    scanf("%d", &key);
+
+    for(i = 0; str[i] != '\0'; i++)
+    {
+        if(str[i] >= 'A' && str[i] <= 'Z')
+            str[i] = (str[i] - 'A' + key + 26) % 26 + 'A';
+        else if(str[i] >= 'a' && str[i] <= 'z')
+            str[i] = (str[i] - 'a' + key + 26) % 26 + 'a';
+    }
+
+    printf("Encrypted text: %s", str);
+
+    return 0;
+}
+```
+# DECRYPTION:
+```
+#include <stdio.h>
+
+int main()
+{
+    char str[100];
+    int key, i;
+
+    printf("Enter text: ");
+    scanf("%99s", str);
+
+    printf("Enter key: ");
+    scanf("%d", &key);
+
+    for(i = 0; str[i] != '\0'; i++)
+    {
+        if(str[i] >= 'A' && str[i] <= 'Z')
+            str[i] = (str[i] - 'A' - key % 26 + 26) % 26 + 'A';
+        else if(str[i] >= 'a' && str[i] <= 'z')
+            str[i] = (str[i] - 'a' - key % 26 + 26) % 26 + 'a';
+    }
+
+    printf("Decrypted value: %s", str);
+
+    return 0;
 }
 ```
 ## OUTPUT:
-<img width="1917" height="1032" alt="Screenshot 2026-10-21 143354" src="https://github.com/user-attachments/assets/c6d97c2a-e42d-4a69-ac71-55f6212f2247" />
+<img width="1916" height="1035" alt="image" src="https://github.com/user-attachments/assets/b9e32101-c068-478c-aa1d-f2a832930479" />
+<img width="1912" height="1027" alt="image" src="https://github.com/user-attachments/assets/bce4b75c-19d2-454b-b060-6ed353e7a70d" />
+
 
 ## RESULT :
  Thus the implementation of ceasar cipher had been executed successfully.
