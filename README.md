@@ -75,8 +75,11 @@ int main()
 ```
 ## OUTPUT:
 ## ENCRYPTION:
+
 <img width="1916" height="1035" alt="image" src="https://github.com/user-attachments/assets/b9e32101-c068-478c-aa1d-f2a832930479" />
+
 ## DECRYPTION:
+
 <img width="1912" height="1027" alt="image" src="https://github.com/user-attachments/assets/bce4b75c-19d2-454b-b060-6ed353e7a70d" />
 
 
