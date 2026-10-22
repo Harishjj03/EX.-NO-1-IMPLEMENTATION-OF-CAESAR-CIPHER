@@ -1,6 +1,7 @@
 # EX. NO: 1(A) : IMPLEMENTATION OF CAESAR CIPHER
 ## Reg NO : 212224223002
 ## Name : HARISHBALA J
+## Date : 21-10-2026
 ## AIM:
 To implement the simple substitution technique named Caesar cipher using C language.
 
@@ -17,9 +18,9 @@ STEP-4: Else subtract the key from the plain text.
 STEP-5: Display the cipher text obtained above.
 
 ## PROGRAM:
-# ENCRYPTION:
 ```
 #include <stdio.h>
+#include <string.h>
 
 int main()
 {
@@ -27,60 +28,39 @@ int main()
     int key, i;
 
     printf("Enter text: ");
-    scanf("%s", str);
+    scanf(" %99[^\n]", str);
 
     printf("Enter key: ");
     scanf("%d", &key);
 
-    for(i = 0; str[i] != '\0'; i++)
-    {
-        if(str[i] >= 'A' && str[i] <= 'Z')
-            str[i] = (str[i] - 'A' + key + 26) % 26 + 'A';
-        else if(str[i] >= 'a' && str[i] <= 'z')
-            str[i] = (str[i] - 'a' + key + 26) % 26 + 'a';
-    }
-
-    printf("Encrypted text: %s", str);
-
-    return 0;
-}
-```
-# DECRYPTION:
-```
-#include <stdio.h>
-
-int main()
-{
-    char str[100];
-    int key, i;
-
-    printf("Enter text: ");
-    scanf("%99s", str);
-
-    printf("Enter key: ");
-    scanf("%d", &key);
+    key = ((key % 26) + 26) % 26;
 
     for(i = 0; str[i] != '\0'; i++)
     {
         if(str[i] >= 'A' && str[i] <= 'Z')
-            str[i] = (str[i] - 'A' - key % 26 + 26) % 26 + 'A';
+            str[i] = (str[i] - 'A' + key) % 26 + 'A';
         else if(str[i] >= 'a' && str[i] <= 'z')
-            str[i] = (str[i] - 'a' - key % 26 + 26) % 26 + 'a';
+            str[i] = (str[i] - 'a' + key) % 26 + 'a';
     }
 
-    printf("Decrypted value: %s", str);
+    printf("Encrypted text: %s\n", str);
+
+    for(i = 0; str[i] != '\0'; i++)
+    {
+        if(str[i] >= 'A' && str[i] <= 'Z')
+            str[i] = (str[i] - 'A' - key + 26) % 26 + 'A';
+        else if(str[i] >= 'a' && str[i] <= 'z')
+            str[i] = (str[i] - 'a' - key + 26) % 26 + 'a';
+    }
+
+    printf("Decrypted text: %s\n", str);
 
     return 0;
 }
 ```
 ## OUTPUT:
-## ENCRYPTION:
+<img width="1917" height="1025" alt="image" src="https://github.com/user-attachments/assets/f1a68f5c-3a07-4165-b79d-f513be0ba02e" />
 
-<img width="1916" height="1035" alt="image" src="https://github.com/user-attachments/assets/b9e32101-c068-478c-aa1d-f2a832930479" />
-
-## DECRYPTION:
-
-<img width="1912" height="1027" alt="image" src="https://github.com/user-attachments/assets/bce4b75c-19d2-454b-b060-6ed353e7a70d" />
 
 
 ## RESULT :
